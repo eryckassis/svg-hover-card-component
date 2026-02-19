@@ -1,65 +1,152 @@
-import Image from "next/image";
+import { SvgHoverCard } from "@/components/svg-hover-card/svg-hover-card";
+import type { CardData } from "@/components/svg-hover-card/type";
+
+const cards: CardData[] = [
+  {
+    id: "card-1",
+    title: "",
+    imageSrc: "/img12.jpg",
+    strokeColor: "#64BEF6",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/webflow.svg",
+    logoAlt: "Webflow",
+    externalUrl: "https://webflow.com",
+    headline: "+5K/mo",
+    description:
+      "Built Webflow's Startup + Classroom pages, generating 5K+ new signups every month (2023).",
+    tags: ["Webflow", "Branding"],
+  },
+  {
+    id: "card-2",
+    title: "",
+    imageSrc: "/img5.png",
+    strokeColor: "#FF954F",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/selfie.svg",
+    logoAlt: "Selfie",
+    externalUrl: "https://iselfie.ai/sa",
+    headline: "3X",
+    description:
+      "Partnered with Expa to turn complex product ideas into a fast, interactive site — launched 3× faster for iSelfie (2025).",
+    tags: ["Webflow"],
+  },
+  {
+    id: "card-3",
+    title: "",
+    imageSrc: "/img3.jpg",
+    strokeColor: "#87D85C",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/healt.svg",
+    logoAlt: "Health",
+    externalUrl: "https://www.modernhealth.com/",
+    headline: "48%",
+    description:
+      "Built a scalable Webflow site that speed up launches by 48% (2020-2025)",
+    tags: ["Webflow", "Branding", "Site maintenace"],
+  },
+  {
+    id: "card-4",
+    title: "",
+    videoSrc: "/img4.mp4",
+    strokeColor: "#FF6598",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/mmc.svg",
+    logoAlt: "Health",
+    externalUrl: "https://www.modernhealth.com/",
+    headline: "6X",
+    description:
+      "Faster launch and higher brand awareness through advanced Webflow interactions and Lottie motion",
+    tags: ["Webflow", "Branding"],
+  },
+  {
+    id: "card-5",
+    title: "",
+    videoSrc: "/vidio.mp4",
+    strokeColor: "#F6F3F7",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/morrow.svg",
+    logoAlt: "Health",
+    externalUrl: "https://www.modernhealth.com/",
+    headline: "80%",
+    description:
+      "Optmize workflows, boosting team efficiency and cutting dev bottlenecks by 80%",
+    tags: ["Partnership"],
+  },
+  {
+    id: "card-6",
+    title: "",
+    videoSrc: "/ruby.mp4",
+    strokeColor: "#64BEF6",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/morrow.svg",
+    logoAlt: "Branding",
+    externalUrl: "https://www.rubi.earth/",
+    headline: "7X",
+    description:
+      "built Webflow + custom animations, delivering 7x faster while keeping pixel-perfect design ",
+    tags: ["Branding", "Webflow"],
+  },
+  {
+    id: "card-7",
+    title: "",
+    videoSrc: "/red.mp4",
+    strokeColor: "#031C73",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/salsh.svg",
+    logoAlt: "Branding",
+    externalUrl: "https://andwalsh.com/",
+    headline: "6/12",
+    description:
+      "Streamlined dev workflow and shipped 6 projects in under a year ",
+    tags: ["Partnership"],
+  },
+  {
+    id: "card-8",
+    title: "",
+    videoSrc: "/yellow.avif",
+    strokeColor: "#ffe320",
+    strokeColorSecondary: "#EAEBEC",
+    logoSrc: "/cut.svg",
+    logoAlt: "Branding",
+    externalUrl: "https://thecut.co/",
+    headline: "62%",
+    description:
+      "By migrating to Webflow, The Cut accelerated their website updates,r educing bottlenecks and saving 62% of their dev resources ",
+    tags: ["Branding", "Partnership"],
+  },
+];
 
 export default function Home() {
+  const rows = cards.reduce<CardData[][]>((acc, card, i) => {
+    if (i % 2 === 0) acc.push([]);
+    acc[acc.length - 1].push(card);
+    return acc;
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <header className="w-full py-60 px-8 flex justify-center items-center text-center">
+        <h1 className="text-[clamp(3rem,5vw,7rem)] font-medium leading-[1.25] tracking-[-0.05rem]">
+          The Hover State
+        </h1>
+      </header>
+
+      {rows.map((row, i) => (
+        <div
+          key={i}
+          className="w-full px-2 mb-2 flex gap-2 max-[1000px]:flex-col"
+        >
+          {row.map((card) => (
+            <SvgHoverCard key={card.id} {...card} />
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      ))}
+
+      <footer className="w-full py-60 px-8 flex justify-center items-center text-center">
+        <h1 className="text-[clamp(3rem,5vw,7rem)] font-medium leading-[1.25] tracking-[-0.05rem]">
+          End of Interaction
+        </h1>
+      </footer>
+    </>
   );
 }
