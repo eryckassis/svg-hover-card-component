@@ -1,5 +1,18 @@
 import { SvgHoverCard } from "@/components/svg-hover-card/svg-hover-card";
+import { LogoMark } from "@/components/logo-mark";
 import type { CardData } from "@/components/svg-hover-card/type";
+import type { Logo } from "@/components/logo-mark";
+
+const PARTNER_LOGOS: LOGO[] = [
+  { src: "/webflow.svg", alt: "Webflow" },
+  { src: "/morrow.svg", alt: "Expo" },
+  { src: "/healt.svg", alt: "Modern Health" },
+  { src: "/morrow.svg", alt: "Mindsparkle Mag" },
+  { src: "/salsh.svg", alt: "Walsh" },
+  { src: "/cut.svg", alt: "The Cut" },
+  { src: "/mmc.svg", alt: "MMC" },
+  { src: "/selfie.svg", alt: "Selfie" },
+];
 
 const cards: CardData[] = [
   {
@@ -130,6 +143,8 @@ export default function Home() {
           The Hover State
         </h1>
       </header>
+
+      <LogoMark logos={PARTNER_LOGOS} speed={50} />
 
       {rows.map((row, i) => (
         <div
