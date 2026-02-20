@@ -5,7 +5,7 @@ import type { Logo } from "@/components/logo-mark";
 
 const PARTNER_LOGOS: LOGO[] = [
   { src: "/webflow.svg", alt: "Webflow" },
-  { src: "/morrow.svg", alt: "Expo" },
+  { src: "/rubi.svg", alt: "Ruby" },
   { src: "/healt.svg", alt: "Modern Health" },
   { src: "/morrow.svg", alt: "Mindsparkle Mag" },
   { src: "/salsh.svg", alt: "Walsh" },
@@ -91,7 +91,7 @@ const cards: CardData[] = [
     videoSrc: "/ruby.mp4",
     strokeColor: "#64BEF6",
     strokeColorSecondary: "#EAEBEC",
-    logoSrc: "/morrow.svg",
+    logoSrc: "/rubi.svg",
     logoAlt: "Branding",
     externalUrl: "https://www.rubi.earth/",
     headline: "7X",
