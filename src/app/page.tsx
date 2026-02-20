@@ -1,5 +1,7 @@
 import { SvgHoverCard } from "@/components/svg-hover-card/svg-hover-card";
 import { LogoMark } from "@/components/logo-mark";
+import { HeroSection } from "@/components/hero-section";
+import { FooterSection } from "@/components/footer-section";
 import type { CardData } from "@/components/svg-hover-card/type";
 import type { Logo } from "@/components/logo-mark";
 
@@ -138,11 +140,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="w-full py-60 px-8 flex justify-center items-center text-center">
-        <h1 className="text-[clamp(3rem,5vw,7rem)] font-medium leading-[1.25] tracking-[-0.05rem]">
-          The Hover State
-        </h1>
-      </header>
+      <HeroSection />
 
       <LogoMark logos={PARTNER_LOGOS} speed={50} />
 
@@ -157,11 +155,7 @@ export default function Home() {
         </div>
       ))}
 
-      <footer className="w-full py-60 px-8 flex justify-center items-center text-center">
-        <h1 className="text-[clamp(3rem,5vw,7rem)] font-medium leading-[1.25] tracking-[-0.05rem]">
-          End of Interaction
-        </h1>
-      </footer>
+      <FooterSection />
     </>
   );
 }
