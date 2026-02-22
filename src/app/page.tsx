@@ -5,7 +5,7 @@ import { FooterSection } from "@/components/footer-section";
 import type { CardData } from "@/components/svg-hover-card/type";
 import type { Logo } from "@/components/logo-mark";
 
-const PARTNER_LOGOS: LOGO[] = [
+const PARTNER_LOGOS: Logo[] = [
   { src: "/webflow.svg", alt: "Webflow" },
   { src: "/rubi.svg", alt: "Ruby" },
   { src: "/healt.svg", alt: "Modern Health" },
