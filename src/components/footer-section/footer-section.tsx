@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TestimonialAuthor } from "./testimonial-author";
 const HEADLINE = "Websites built at startup speed, without the agency friction";
 
 const FEATURES = [
@@ -56,6 +57,8 @@ function Testimonial() {
       <p className="mt-0 mb-2.5 max-w-[900px] font-neuemontreal text-[1.8em] font-light leading-[1.4] text-gray-900">
         {TESTIMONIAL}
       </p>
+
+      <TestimonialAuthor />
     </div>
   );
 }
