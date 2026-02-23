@@ -2,6 +2,9 @@ import { SvgHoverCard } from "@/components/svg-hover-card/svg-hover-card";
 import { LogoMark } from "@/components/logo-mark";
 import { HeroSection } from "@/components/hero-section";
 import { FooterSection } from "@/components/footer-section";
+import { ServicesSection } from "@/components/services-section/services-section";
+import { ConnectorsSection } from "@/components/connectors-section";
+import { ScrollToExplore } from "@/components/scroll-to-explore";
 import type { CardData } from "@/components/svg-hover-card/type";
 import type { Logo } from "@/components/logo-mark";
 
@@ -156,6 +159,8 @@ export default function Home() {
       ))}
 
       <FooterSection />
+      <ServicesSection />
+      <ConnectorsSection />
     </>
   );
 }
