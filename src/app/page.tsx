@@ -5,6 +5,7 @@ import { FooterSection } from "@/components/footer-section";
 import { ServicesSection } from "@/components/services-section/services-section";
 import { ConnectorsSection } from "@/components/connectors-section";
 import { ScrollToExplore } from "@/components/scroll-to-explore";
+import { ScrollBar } from "@/components/scroll-bar";
 import type { CardData } from "@/components/svg-hover-card/type";
 import type { Logo } from "@/components/logo-mark";
 
@@ -143,6 +144,7 @@ export default function Home() {
 
   return (
     <>
+      <ScrollBar />
       <HeroSection />
 
       <LogoMark logos={PARTNER_LOGOS} speed={50} />
