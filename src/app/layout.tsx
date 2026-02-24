@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { Analytics } from "@/components/analytics";
+import { ScrollBar } from "@/components/scroll-bar";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -14,16 +18,20 @@ export const metadata: Metadata = {
   description: "interactive SVG stroke animation on hover",
 };
 
+const scrollBar = <ScrollBar width={6} trackHeight={190} />;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
         <SmoothScroll />
+        {scrollBar}
         {children}
+        <Analytics />
       </body>
     </html>
   );

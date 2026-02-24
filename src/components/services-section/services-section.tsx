@@ -43,6 +43,7 @@ export function ServicesSection() {
       descriptionColor="#888"
       lineColor="#333"
       className="rounded-[40px]"
+      theme="dark"
     >
       <ContactCTA />
     </SectionLayout>

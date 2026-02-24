@@ -19,5 +19,6 @@ export interface SectionLayoutProps {
   descriptionColor?: string;
   lineColor?: string;
   className?: string;
+  theme?: "dark" | "light";
   children?: React.ReactNode;
 }

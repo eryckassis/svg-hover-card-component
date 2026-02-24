@@ -10,10 +10,12 @@ export function SectionLayout({
   descriptionColor = "#5F5F5F",
   lineColor = "#e0e0e0",
   className = "",
+  theme,
   children,
 }: SectionLayoutProps) {
   return (
     <section
+      data-theme={theme}
       className={`w-full px-16 pt-28 pb-16 max-[1000px]:px-6 ${bg} ${className}`}
     >
       <div className="grid grid-cols-[0.8fr_1.2fr] gap-20 max-[1000px]:grid-cols-1">

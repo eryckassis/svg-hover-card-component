@@ -1,17 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ScrollBarProps } from "./types";
 
-export function ScrollBar({ trackHeight = 160, width = 6 }: ScrollBarProps) {
+export function ScrollBar({ trackHeight = 160, width = 2 }: ScrollBarProps) {
   const thumbRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [isDark, setIsDark] = useState(false);
+
+  const updateThumbRef = useRef(() => {});
+  const updateColorRef = useRef(() => {});
 
   useEffect(() => {
     const thumb = thumbRef.current;
     if (!thumb) return;
 
-    const updateThumb = () => {
+    updateThumbRef.current = () => {
       const scrollTop = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -28,42 +31,60 @@ export function ScrollBar({ trackHeight = 160, width = 6 }: ScrollBarProps) {
           trackHeight,
       );
       const maxTravel = trackHeight - thumbHeight;
-      const thumbTop = scrollRatio * maxTravel;
 
       thumb.style.height = `${thumbHeight}px`;
-      thumb.style.transform = `translateY(${thumbTop}px)`;
+      thumb.style.transform = `translateY(${maxTravel * scrollRatio}px)`;
       thumb.style.opacity = "1";
     };
 
-    updateThumb();
+    updateColorRef.current = () => {
+      // Pega o elemento exatamente onde a scrollbar está na tela
+      const x = window.innerWidth - 16; // right-4 = 16px
+      const y = window.innerHeight / 2; // top-1/2
 
-    const onScroll = () => {
-      requestAnimationFrame(updateThumb);
+      const el = document.elementFromPoint(x, y);
+      const section = el?.closest("[data-theme]");
+      const theme = section?.getAttribute("data-theme");
+
+      setIsDark(theme === "dark");
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateThumb, { passive: true });
+    updateThumbRef.current();
+    updateColorRef.current();
+
+    const listener = () => {
+      requestAnimationFrame(() => {
+        updateThumbRef.current();
+        updateColorRef.current();
+      });
+    };
+
+    window.addEventListener("scroll", listener, { passive: true });
+    window.addEventListener("resize", listener, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", updateThumb);
+      window.removeEventListener("scroll", listener);
+      window.removeEventListener("resize", listener);
     };
   }, [trackHeight]);
 
   return (
     <div
-      className="fixed right-4 top-1/2 z-50 -translate-y-1/2"
+      className="fixed right-6 top-1/2 z-50 -translate-y-1/2"
       style={{ height: trackHeight, width }}
     >
       {/* Track */}
       <div
-        ref={trackRef}
-        className="h-full w-full rounded-full bg-[#0000001a]"
+        className={`h-full w-full rounded-full transition-colors duration-300 ${
+          isDark ? "bg-white/20" : "bg-black/10"
+        }`}
       />
       {/* Thumb */}
       <div
         ref={thumbRef}
-        className="absolute left-0 top-0 w-full rounded-full bg-black/80 transition-opacity duration-200"
+        className={`absolute left-0 top-0 w-full rounded-full transition-colors duration-300 ${
+          isDark ? "bg-white/90" : "bg-black/80"
+        }`}
         style={{ height: trackHeight * 0.25 }}
       />
     </div>

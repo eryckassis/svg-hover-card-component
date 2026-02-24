@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import {ScrollToExplore} from "@/components/scroll-to-explore";
+import { ScrollToExplore } from "@/components/scroll-to-explore";
 
 const ConnectorsScene = dynamic(
   () =>
@@ -13,8 +13,8 @@ const ConnectorsScene = dynamic(
 
 export function ConnectorsSection() {
   return (
-    <section className="w-full py-20 px-4">
-        <ScrollToExplore />
+    <section data-theme="dark" className="w-full py-20 px-4">
+      <ScrollToExplore />
       <ConnectorsScene />
     </section>
   );
