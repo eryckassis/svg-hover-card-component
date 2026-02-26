@@ -9,7 +9,7 @@ export function ScrollToExplore() {
       <PlusIcon />
       <PlusIcon />
     </div>
-  );
+  )
 }
 
 function PlusIcon() {
@@ -18,5 +18,5 @@ function PlusIcon() {
       <div className="absolute left-1/2 top-0 bottom-0 w-px  bg-black -translate-x-1/2" />
       <div className="absolute top-1/2 left-0 right-0 h-px  bg-black -translate-y-1/2" />
     </div>
-  );
+  )
 }

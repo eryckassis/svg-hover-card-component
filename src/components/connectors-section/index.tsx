@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import dynamic from "next/dynamic";
-import { ScrollToExplore } from "@/components/scroll-to-explore";
+import dynamic from 'next/dynamic'
+import { ScrollToExplore } from '@/components/scroll-to-explore'
 
 const ConnectorsScene = dynamic(
   () =>
-    import("./connectors-scene").then((mod) => ({
+    import('./connectors-scene').then((mod) => ({
       default: mod.ConnectorsScene,
     })),
   { ssr: false },
-);
+)
 
 export function ConnectorsSection() {
   return (
@@ -17,5 +17,5 @@ export function ConnectorsSection() {
       <ScrollToExplore />
       <ConnectorsScene />
     </section>
-  );
+  )
 }

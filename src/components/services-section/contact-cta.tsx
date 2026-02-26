@@ -5,7 +5,7 @@ export function ContactCTA() {
         Contact us
       </h3>
       <p className="ml-60 max-w-[1000px] text-[4em] font-normal leading-[1.3] text-white">
-        If you&apos;re growing, we&apos;re ready to build with you.{" "}
+        If you&apos;re growing, we&apos;re ready to build with you.{' '}
         <a
           href="#"
           className="text-[#8a8a8a]  decoration-[#8a8a8a] underline-offset-4 transition-colors hover:text-white hover:decoration-white"
@@ -14,5 +14,5 @@ export function ContactCTA() {
         </a>
       </p>
     </div>
-  );
+  )
 }

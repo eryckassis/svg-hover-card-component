@@ -1,4 +1,4 @@
 export interface ScrollBarProps {
-  trackHeight?: number;
-  width?: number;
+  trackHeight?: number
+  width?: number
 }

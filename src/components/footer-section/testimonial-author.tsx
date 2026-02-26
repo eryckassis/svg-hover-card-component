@@ -3,7 +3,7 @@ import {
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/components/ui/avatar";
+} from '@/components/ui/avatar'
 
 export function TestimonialAuthor() {
   return (
@@ -27,5 +27,5 @@ export function TestimonialAuthor() {
         </span>
       </div>
     </div>
-  );
+  )
 }

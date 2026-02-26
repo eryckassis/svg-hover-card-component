@@ -1,59 +1,53 @@
-"use client";
+'use client'
 
-import { forwardRef, useRef } from "react";
-import { MenuLinks } from "./menu-links";
-import { MenuNewsletter } from "./menu-newsletter";
-import { MenuLabs } from "./menu-labs";
-import { useMenuAnimation } from "./use-menu-animations";
+import { forwardRef, useRef } from 'react'
+import { MenuLinks } from './menu-links'
+import { MenuNewsletter } from './menu-newsletter'
+import { MenuLabs } from './menu-labs'
+import { useMenuAnimation } from './use-menu-animations'
 
 type MenuPanelProps = {
-  isOpen: boolean;
-};
+  isOpen: boolean
+}
 
 export const MenuPanel = forwardRef<HTMLDivElement, MenuPanelProps>(
   function MenuPanel({ isOpen }, ref) {
-    // Use internal ref for animation, merge with external ref
-    const internalRef = useRef<HTMLDivElement>(null);
+    const internalRef = useRef<HTMLDivElement>(null)
 
-    // Merge refs
     const setRef = (node: HTMLDivElement | null) => {
-      (internalRef as React.MutableRefObject<HTMLDivElement | null>).current =
-        node;
+      ;(internalRef as React.MutableRefObject<HTMLDivElement | null>).current =
+        node
 
-      if (typeof ref === "function") {
-        ref(node);
+      if (typeof ref === 'function') {
+        ref(node)
       } else if (ref) {
-        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+        ;(ref as React.MutableRefObject<HTMLDivElement | null>).current = node
       }
-    };
+    }
 
-    // GSAP animation
-    useMenuAnimation(internalRef, isOpen);
+    useMenuAnimation(internalRef, isOpen)
 
     return (
       <div
         ref={setRef}
-        className="absolute right-0 top-full mt-3 flex w-[340px] flex-col gap-3"
+        className="absolute right-0 top-full mt-3 flex w-[320px]  flex-col gap-2"
         style={{
-          visibility: "hidden",
-          willChange: "transform, opacity",
+          visibility: 'hidden',
+          willChange: 'transform, opacity',
         }}
       >
-        {/* Section 1: Links — tilts left, pivots bottom-right */}
-        <div style={{ willChange: "transform, opacity" }}>
+        <div style={{ willChange: 'transform, opacity' }}>
           <MenuLinks />
         </div>
 
-        {/* Section 2: Newsletter — tilts right, pivots bottom-left */}
-        <div style={{ willChange: "transform, opacity" }}>
+        <div style={{ willChange: 'transform, opacity' }}>
           <MenuNewsletter />
         </div>
 
-        {/* Section 3: Labs — tilts left, pivots bottom-right */}
-        <div style={{ willChange: "transform, opacity" }}>
+        <div style={{ willChange: 'transform, opacity' }}>
           <MenuLabs />
         </div>
       </div>
-    );
+    )
   },
-);
+)

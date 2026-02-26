@@ -1,2 +1,2 @@
-export { SectionLayout } from "./section-layout";
-export type { Feature, SectionLayoutProps } from "./types";
+export { SectionLayout } from './section-layout'
+export type { Feature, SectionLayoutProps } from './types'

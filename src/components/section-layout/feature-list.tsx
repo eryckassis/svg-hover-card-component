@@ -1,4 +1,4 @@
-import type { FeatureListProps } from "./types";
+import type { FeatureListProps } from './types'
 
 export function FeatureList({
   features,
@@ -31,5 +31,5 @@ export function FeatureList({
         </div>
       ))}
     </div>
-  );
+  )
 }

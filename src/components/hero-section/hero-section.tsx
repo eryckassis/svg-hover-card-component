@@ -1,6 +1,6 @@
-import { Navbar } from "./navbar";
+import { Navbar } from './navbar'
 
-const HEADLINE_LINES = ["AI companies", "deserve more than", "agencies"];
+const HEADLINE_LINES = ['AI companies', 'deserve more than', 'agencies']
 
 function Headline() {
   return (
@@ -13,7 +13,7 @@ function Headline() {
         ))}
       </h1>
     </div>
-  );
+  )
 }
 
 export function HeroSection() {
@@ -22,5 +22,5 @@ export function HeroSection() {
       <Navbar />
       <Headline />
     </header>
-  );
+  )
 }

@@ -1,1 +1,1 @@
-export { FooterSection } from "./footer-section";
+export { FooterSection } from './footer-section'

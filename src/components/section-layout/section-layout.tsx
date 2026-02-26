@@ -1,15 +1,15 @@
-import { FeatureList } from "./feature-list";
-import type { SectionLayoutProps } from "./types";
+import { FeatureList } from './feature-list'
+import type { SectionLayoutProps } from './types'
 
 export function SectionLayout({
   headline,
   features,
-  bg = "bg-white",
-  headlineColor = "text-gray-900",
-  labelColor = "#1a1a1a",
-  descriptionColor = "#5F5F5F",
-  lineColor = "#e0e0e0",
-  className = "",
+  bg = 'bg-white',
+  headlineColor = 'text-gray-900',
+  labelColor = '#1a1a1a',
+  descriptionColor = '#5F5F5F',
+  lineColor = '#e0e0e0',
+  className = '',
   theme,
   children,
 }: SectionLayoutProps) {
@@ -33,5 +33,5 @@ export function SectionLayout({
       </div>
       {children}
     </section>
-  );
+  )
 }

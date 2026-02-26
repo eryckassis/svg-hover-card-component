@@ -1,2 +1,2 @@
-export { TwinArrow } from "./twin-arrow";
-export type { TwinArrowProps } from "./types";
+export { TwinArrow } from './twin-arrow'
+export type { TwinArrowProps } from './types'

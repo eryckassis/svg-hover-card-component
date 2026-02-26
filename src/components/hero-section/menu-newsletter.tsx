@@ -1,8 +1,6 @@
-"use client";
-
-// rendering-hoist-jsx: arrow SVG hoisted
+'use client'
 const ARROW_PATH =
-  "M4.11 12.75a.75.75 0 0 1 0-1.5h13.978l-5.036-5.036a.75.75 0 1 1 1.06-1.06l6.316 6.315.53.53-.53.53-6.316 6.317a.75.75 0 0 1-1.06-1.061l5.035-5.035H4.109Z";
+  'M4.11 12.75a.75.75 0 0 1 0-1.5h13.978l-5.036-5.036a.75.75 0 1 1 1.06-1.06l6.316 6.315.53.53-.53.53-6.316 6.317a.75.75 0 0 1-1.06-1.061l5.035-5.035H4.109Z'
 
 const arrowIcon = (
   <svg
@@ -14,7 +12,7 @@ const arrowIcon = (
   >
     <path fill="#000" fillRule="evenodd" d={ARROW_PATH} clipRule="evenodd" />
   </svg>
-);
+)
 
 export function MenuNewsletter() {
   return (
@@ -46,5 +44,5 @@ export function MenuNewsletter() {
         </form>
       </div>
     </div>
-  );
+  )
 }

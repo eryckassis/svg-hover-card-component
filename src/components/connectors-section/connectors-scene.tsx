@@ -1,30 +1,30 @@
-"use client";
+'use client'
 
-import * as THREE from "three";
-import { useRef, useReducer, useMemo, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from 'three'
+import { useRef, useReducer, useMemo, Suspense } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import {
   useGLTF,
   MeshTransmissionMaterial,
   Environment,
   Lightformer,
-} from "@react-three/drei";
+} from '@react-three/drei'
 import {
   CuboidCollider,
   BallCollider,
   Physics,
   RigidBody,
-} from "@react-three/rapier";
-import { EffectComposer, N8AO } from "@react-three/postprocessing";
-import { easing } from "maath";
-import type { RapierRigidBody } from "@react-three/rapier";
-import type { Mesh } from "three";
-import type { ModelProps, ConnectorProps } from "./types";
-import { ACCENTS, BACKGROUND_COLOR, shuffle } from "./constants";
+} from '@react-three/rapier'
+import { EffectComposer, N8AO } from '@react-three/postprocessing'
+import { easing } from 'maath'
+import type { RapierRigidBody } from '@react-three/rapier'
+import type { Mesh } from 'three'
+import type { ModelProps, ConnectorProps } from './types'
+import { ACCENTS, BACKGROUND_COLOR, shuffle } from './constants'
 
 function Pointer() {
-  const ref = useRef<RapierRigidBody>(null);
-  const vec = useMemo(() => new THREE.Vector3(), []);
+  const ref = useRef<RapierRigidBody>(null)
+  const vec = useMemo(() => new THREE.Vector3(), [])
 
   useFrame(({ pointer, viewport }) => {
     ref.current?.setNextKinematicTranslation(
@@ -33,8 +33,8 @@ function Pointer() {
         (pointer.y * viewport.height) / 2,
         0,
       ),
-    );
-  });
+    )
+  })
 
   return (
     <RigidBody
@@ -45,13 +45,13 @@ function Pointer() {
     >
       <BallCollider args={[1]} />
     </RigidBody>
-  );
+  )
 }
 
-function Model({ children, color = "white", roughness = 0 }: ModelProps) {
-  const ref = useRef<Mesh>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { nodes, materials } = useGLTF("/c-transformed.glb") as any;
+function Model({ children, color = 'white', roughness = 0 }: ModelProps) {
+  const ref = useRef<Mesh>(null)
+
+  const { nodes, materials } = useGLTF('/c-transformed.glb') as any
 
   useFrame((_state, delta) => {
     if (ref.current) {
@@ -60,9 +60,9 @@ function Model({ children, color = "white", roughness = 0 }: ModelProps) {
         color,
         0.2,
         delta,
-      );
+      )
     }
-  });
+  })
 
   return (
     <mesh
@@ -79,7 +79,7 @@ function Model({ children, color = "white", roughness = 0 }: ModelProps) {
       />
       {children}
     </mesh>
-  );
+  )
 }
 
 function Connector({
@@ -89,14 +89,14 @@ function Connector({
   color,
   roughness,
 }: ConnectorProps) {
-  const api = useRef<RapierRigidBody>(null);
-  const vec = useMemo(() => new THREE.Vector3(), []);
-  const r = THREE.MathUtils.randFloatSpread;
+  const api = useRef<RapierRigidBody>(null)
+  const vec = useMemo(() => new THREE.Vector3(), [])
+  const r = THREE.MathUtils.randFloatSpread
   const pos = useMemo<[number, number, number]>(
     () => position || [r(20), r(20), r(20)],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [],
-  );
+  )
 
   useFrame(() => {
     if (api.current) {
@@ -106,9 +106,9 @@ function Connector({
           .negate()
           .multiplyScalar(0.1),
         true,
-      );
+      )
     }
-  });
+  })
 
   return (
     <RigidBody
@@ -126,15 +126,15 @@ function Connector({
       {children ? children : <Model color={color} roughness={roughness} />}
       {accent && <pointLight intensity={4} distance={9.5} color={color} />}
     </RigidBody>
-  );
+  )
 }
 
 function Scene() {
   const [accent, click] = useReducer(
     (state: number) => ++state % ACCENTS.length,
     0,
-  );
-  const connectors = useMemo(() => shuffle(accent), [accent]);
+  )
+  const connectors = useMemo(() => shuffle(accent), [accent])
 
   return (
     <Canvas
@@ -210,15 +210,15 @@ function Scene() {
         </group>
       </Environment>
     </Canvas>
-  );
+  )
 }
 
 export function ConnectorsScene() {
   return (
     <div
       style={{
-        width: "100%",
-        height: "80vh",
+        width: '100%',
+        height: '80vh',
         background: BACKGROUND_COLOR,
         borderRadius: 20,
       }}
@@ -227,5 +227,5 @@ export function ConnectorsScene() {
         <Scene />
       </Suspense>
     </div>
-  );
+  )
 }

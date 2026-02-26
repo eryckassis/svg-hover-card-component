@@ -1,18 +1,18 @@
 export type TwinTextProps = {
-  text: string;
+  text: string
 
-  className?: string;
+  className?: string
 
-  duration?: number;
+  duration?: number
 
-  ease?: string;
+  ease?: string
 
-  hoverParent?: boolean;
+  hoverParent?: boolean
 
-  controlled?: boolean;
-};
+  controlled?: boolean
+}
 
 export type TwinTextHandle = {
-  enter: () => void;
-  leave: () => void;
-};
+  enter: () => void
+  leave: () => void
+}

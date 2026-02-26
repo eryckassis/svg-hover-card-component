@@ -1,6 +1,6 @@
-export { HeroSection } from "./hero-section";
-export { Navbar } from "./navbar";
-export { MenuPanel } from "./menu-panel";
-export { MenuLinks } from "./menu-links";
-export { MenuNewsletter } from "./menu-newsletter";
-export { MenuLabs } from "./menu-labs";
+export { HeroSection } from './hero-section'
+export { Navbar } from './navbar'
+export { MenuPanel } from './menu-panel'
+export { MenuLinks } from './menu-links'
+export { MenuNewsletter } from './menu-newsletter'
+export { MenuLabs } from './menu-labs'
