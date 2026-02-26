@@ -5,8 +5,6 @@ import type { default as GsapType } from "gsap";
 import { MenuPanel } from "./menu-panel";
 
 const TALK_TEXT = "LET'S TALK";
-const MENU_TEXT = "MENU";
-const CLOSE_TEXT = "CLOSE";
 
 // rendering-hoist-jsx: arrow SVG path hoisted
 const ARROW_PATH = "M2.343 8h11.314m0 0-4.984 4.984M13.657 8 8.673 3.016";
@@ -36,10 +34,13 @@ export const NavActions = forwardRef<HTMLDivElement>(
     const roundBtnRef = useRef<HTMLButtonElement>(null);
     const menuBtnRef = useRef<HTMLButtonElement>(null);
     const menuDotsRef = useRef<HTMLSpanElement>(null);
-    const menuTextRef = useRef<HTMLSpanElement>(null);
     const flairRef = useRef<HTMLSpanElement>(null);
     const linePathRef = useRef<SVGPathElement>(null);
     const menuPanelRef = useRef<HTMLDivElement>(null);
+
+    // Twin label refs for MENU ↔ CLOSE
+    const menuLabelRef = useRef<HTMLSpanElement>(null);
+    const closeLabelRef = useRef<HTMLSpanElement>(null);
 
     const cleanupRef = useRef<(() => void) | null>(null);
     const initializedRef = useRef(false);
@@ -54,6 +55,47 @@ export const NavActions = forwardRef<HTMLDivElement>(
     const toggleMenu = useCallback(() => {
       setMenuOpen((prev) => !prev);
     }, []);
+
+    // Animate MENU ↔ CLOSE on menuOpen change
+    useEffect(() => {
+      const gsap = gsapRef.current;
+      const menuLabel = menuLabelRef.current;
+      const closeLabel = closeLabelRef.current;
+
+      if (!gsap || !menuLabel || !closeLabel) return;
+
+      const h = menuLabel.offsetHeight;
+
+      if (menuOpen) {
+        // MENU slides up and out, CLOSE slides up into view
+        gsap.to(menuLabel, {
+          y: -h,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: true,
+        });
+        gsap.to(closeLabel, {
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: true,
+        });
+      } else {
+        // CLOSE slides back down, MENU slides back to original
+        gsap.to(menuLabel, {
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: true,
+        });
+        gsap.to(closeLabel, {
+          y: h,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: true,
+        });
+      }
+    }, [menuOpen]);
 
     useEffect(() => {
       // advanced-init-once: prevent double init in dev
@@ -83,6 +125,8 @@ export const NavActions = forwardRef<HTMLDivElement>(
         const menuDots = menuDotsRef.current;
         const flair = flairRef.current;
         const linePath = linePathRef.current;
+        const menuLabel = menuLabelRef.current;
+        const closeLabel = closeLabelRef.current;
 
         if (
           !btn ||
@@ -93,9 +137,17 @@ export const NavActions = forwardRef<HTMLDivElement>(
           !menuBtn ||
           !menuDots ||
           !flair ||
-          !linePath
+          !linePath ||
+          !menuLabel ||
+          !closeLabel
         )
           return;
+
+        // ── Set initial twin label state ──
+        // MENU visible at y:0, CLOSE hidden below at y:lineHeight
+        const labelHeight = menuLabel.offsetHeight;
+        gsap.set(menuLabel, { y: 0 });
+        gsap.set(closeLabel, { y: labelHeight });
 
         // ── Let's Talk hover timeline ──
         const tl = gsap.timeline({ paused: true });
@@ -277,7 +329,7 @@ export const NavActions = forwardRef<HTMLDivElement>(
           ref={roundBtnRef}
           type="button"
           aria-label="Toggle music"
-          className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white/90 backdrop-blur-sm"
+          className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-[#e4e6ef] backdrop-blur-sm"
         >
           <span
             ref={flairRef}
@@ -315,7 +367,7 @@ export const NavActions = forwardRef<HTMLDivElement>(
           ref={talkBtnRef}
           type="button"
           style={{ backgroundColor: "#2b2e3a" }}
-          className="relative flex items-center gap-2 overflow-hidden rounded-full px-6 py-3.5 text-xs font-semibold tracking-wide text-white uppercase"
+          className="relative flex items-center gap-1 overflow-hidden rounded-full px-6 py-3.5 text-xs font-semibold tracking-wide text-surface uppercase"
         >
           <span
             ref={arrowRef}
@@ -339,24 +391,52 @@ export const NavActions = forwardRef<HTMLDivElement>(
             </svg>
           </span>
           <span ref={textRef}>{TALK_TEXT}</span>
-          <span ref={dotRef} className="h-1.5 w-1.5 rounded-full bg-white/60" />
+          <span ref={dotRef} className="h-1.5 w-1.5 rounded-full bg-white" />
         </button>
 
-        {/* Menu / Close */}
+        {/* Menu / Close toggle */}
         <button
           ref={menuBtnRef}
           type="button"
           onClick={toggleMenu}
-          className="flex items-center gap-2 rounded-full bg-white/90 px-6 py-3.5 text-xs font-semibold tracking-wide text-neutral-800 uppercase backdrop-blur-sm"
+          className="flex items-center gap-2 rounded-full bg-[#e4e6ef] hover:bg-white transition-colors duration-300 px-6 py-3.5 text-xs font-semibold tracking-wide text-neutral-800 uppercase backdrop-blur-sm"
         >
-          <span ref={menuTextRef}>{menuOpen ? CLOSE_TEXT : MENU_TEXT}</span>
+          {/* Twin text: MENU ↔ CLOSE */}
+          <span className="relative inline-flex overflow-hidden leading-none">
+            {/* Invisible spacer — longest text defines container width */}
+            <span
+              className="pointer-events-none invisible inline-block whitespace-nowrap leading-none select-none"
+              aria-hidden="true"
+            >
+              CLOSE
+            </span>
+
+            {/* MENU — starts visible at y:0 */}
+            <span
+              ref={menuLabelRef}
+              className="absolute left-0 top-0 inline-block whitespace-nowrap leading-none"
+              style={{ willChange: "transform" }}
+            >
+              MENU
+            </span>
+
+            {/* CLOSE — starts hidden below */}
+            <span
+              ref={closeLabelRef}
+              className="absolute left-0 top-0 inline-block whitespace-nowrap leading-none"
+              style={{ willChange: "transform" }}
+            >
+              CLOSE
+            </span>
+          </span>
+
           <span
             ref={menuDotsRef}
             className="flex gap-1"
             style={{ willChange: "transform" }}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-neutral-800/60" />
-            <span className="h-1.5 w-1.5 rounded-full bg-neutral-800/60" />
+            <span className="h-1.5 w-1.5 rounded-full bg-neutral-800/90" />
+            <span className="h-1.5 w-1.5 rounded-full bg-neutral-800/90" />
           </span>
         </button>
 

@@ -1,5 +1,8 @@
 "use client";
 
+import { TwinText } from "@/components/twin-text";
+import { TwinArrow } from "@/components/twin-arrow";
+
 // rendering-hoist-jsx: Lucy SVG paths hoisted (from Lusion)
 const LUCY_STROKE_PATH =
   "M20.128 29.65C18.584 31.217 16.532 32 13.972 32c-2.56 0-4.612-.783-6.156-2.35C6.272 28.05 5.5 26 5.5 23.5c0-2.5.772-4.533 2.316-6.1 1.544-1.6 3.596-2.4 6.156-2.4 2.56 0 4.612.8 6.156 2.4C21.71 18.967 22.5 21 22.5 23.5c0 2.5-.79 4.55-2.372 6.15Z";
@@ -23,24 +26,6 @@ const lucyIcon = (
   </svg>
 );
 
-const externalArrow = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    fill="none"
-    viewBox="0 0 24 24"
-  >
-    <path
-      stroke="#fff"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.5"
-      d={EXTERNAL_ARROW_PATH}
-    />
-  </svg>
-);
-
 export function MenuLabs() {
   return (
     <a
@@ -55,14 +40,24 @@ export function MenuLabs() {
           {lucyIcon}
         </div>
 
-        {/* Labs text */}
-        <span className="text-[1.625em] font-aeonik font-normal tracking-wide text-white uppercase">
-          Labs
-        </span>
+        {/* Labs text — TwinText */}
+        <TwinText
+          text="Labs"
+          hoverParent
+          className="text-[1.625em] font-aeonik font-normal tracking-wide text-white uppercase"
+        />
       </div>
 
-      {/* External arrow */}
-      {externalArrow}
+      {/* External arrow — TwinArrow (same size/position) */}
+      <TwinArrow
+        path={EXTERNAL_ARROW_PATH}
+        hoverParent
+        stroke="#fff"
+        strokeWidth={1.5}
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+      />
     </a>
   );
 }
