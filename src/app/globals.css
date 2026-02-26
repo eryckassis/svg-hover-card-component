@@ -14,14 +14,16 @@
 }
 
 @theme {
+  --color-neutral-100: oklch(0.96 0.0121 281.08);
   --color-primary: oklch(0.75 0.12 340);
   --color-primary-light: oklch(0.88 0.08 340);
   --color-primary-muted: oklch(0.65 0.1 340);
-  --color-surface: oklch(0.98 0.005 340);
+  --color-surface: oklch(0.95 0.01 255.4);
   --color-copy: oklch(0.15 0.01 340);
   --color-stroke-base: oklch(0.9 0.02 340);
   --font-sans: "Inter", sans-serif;
   --font-neuemontreal: "Ppneuemontreal", sans-serif;
+  --font-aeonik: "Aeonik", sans-serif;
 }
 
 body {

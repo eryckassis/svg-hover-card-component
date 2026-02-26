@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import { NavActions } from "./nav-actions";
 import type { default as GsapType } from "gsap";
 
 const NAV_BRAND = "S—SKS";
-const CTA_TEXT = "Get Started";
-const CTA_HREF = "#";
 const SCROLL_THRESHOLD = 50;
 
 export function Navbar() {
   const brandRef = useRef<HTMLSpanElement>(null);
-  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
   const lastScrollYRef = useRef(0);
   const isHiddenRef = useRef(false);
   const gsapRef = useRef<typeof GsapType | null>(null);
@@ -35,13 +33,13 @@ export function Navbar() {
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
         const brand = brandRef.current;
-        const cta = ctaRef.current;
+        const actions = actionsRef.current;
         const g = gsapRef.current;
 
-        if (!brand || !cta || !g) return;
+        if (!brand || !actions || !g) return;
 
         const delta = currentScrollY - lastScrollYRef.current;
-        const targets = [brand, cta];
+        const targets = [brand, actions];
 
         if (
           delta > 0 &&
@@ -90,13 +88,7 @@ export function Navbar() {
       >
         {NAV_BRAND}
       </span>
-      <Link
-        ref={ctaRef}
-        href={CTA_HREF}
-        className="rounded-full bg-[#5e34ff] px-8 py-4.5 text-sm font-medium text-white transition-colors will-change-transform hover:bg-black"
-      >
-        {CTA_TEXT}
-      </Link>
+      <NavActions ref={actionsRef} />
     </nav>
   );
 }
