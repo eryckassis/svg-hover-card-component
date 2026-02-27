@@ -37,6 +37,19 @@ Um site de portfólio para agência focada em IA, construído com Next.js 16, Re
   </tr>
 </table>
 
+
+### Menu Interativo identico ao Lusion.co
+
+<table>
+  <tr>
+    <td width="100%" align="center">
+      <video width="2559" height="1079" alt="Screenshot 2026-02-27 134031" src="https://github.com/user-attachments/assets/b7f76483-53ef-449d-9a51-131a548f25d7" />
+      <br>
+      <sub><b>Homepage</b> - Design minimalista com animações GSAP e smooth scroll via Lenis</sub>
+    </td>
+  </tr>
+</table>
+
 ### SVG Hover Cards
 
 <table>
