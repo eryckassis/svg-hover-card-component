@@ -81,7 +81,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-120 py-10">
+    <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 py-6 sm:px-10 md:px-16 xl:px-28 2xl:px-120">
       <span
         ref={brandRef}
         className="text-[2.125em] font-aeonik font-medium tracking-tight will-change-transform"

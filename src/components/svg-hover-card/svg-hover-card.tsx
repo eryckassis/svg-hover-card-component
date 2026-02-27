@@ -204,11 +204,10 @@ export function SvgHoverCard({
     <div
       ref={containerRef}
       id={id}
-      className="relative flex-1 aspect-square max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden cursor-pointer bg-[#0000001a]"
+      className="relative flex-1 aspect-square max-[1000px]:aspect-video max-[1000px]:max-h-[480px] max-[1440px]:max-h-[calc(100vh-12rem)] max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden cursor-pointer bg-[#0000001a]"
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
     >
-      {}
       {videoSrc ? (
         <video
           src={videoSrc}
@@ -230,7 +229,6 @@ export function SvgHoverCard({
         />
       ) : null}
 
-      {}
       <div className="svg-stroke absolute inset-0 flex items-center justify-center pointer-events-none">
         <svg
           className="min-w-[150%] min-h-[150%] w-[150%] h-[150%]"
@@ -265,12 +263,10 @@ export function SvgHoverCard({
         </svg>
       </div>
 
-      {}
       <div
         ref={overlayRef}
-        className="absolute inset-0 flex flex-col justify-between p-8 pointer-events-none"
+        className="absolute inset-0 flex flex-col justify-between p-4 sm:p-6 xl:p-8 pointer-events-none"
       >
-        {}
         <div className="flex items-start justify-between">
           {logoSrc ? (
             <div className="overlay-item">
@@ -279,7 +275,7 @@ export function SvgHoverCard({
                 alt={logoAlt ?? ''}
                 width={120}
                 height={32}
-                className="h-7 w-auto object-contain"
+                className="h-5 sm:h-6 xl:h-7  w-auto object-contain"
               />
             </div>
           ) : (
@@ -291,7 +287,7 @@ export function SvgHoverCard({
               href={externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="overlay-item pointer-events-auto flex items-center justify-center w-9 h-9 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm transition-colors hover:bg-white/40"
+              className="overlay-item pointer-events-auto flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 xl:w-9 xl:h-9 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm transition-colors hover:bg-white/40"
               aria-label="Open external link"
             >
               <svg
@@ -313,13 +309,11 @@ export function SvgHoverCard({
           ) : null}
         </div>
 
-        {}
         <div className="flex-1" />
 
-        {}
         <div className="flex flex-col gap-3">
           {headline ? (
-            <h2 className="overlay-item text-[clamp(1.5rem,2.5vw,1rem)] font-semibold leading-[1.1] tracking-[-0.03rem] text-[#3e3e3e]">
+            <h2 className="overlay-item text-[clamp(1rem,2.5vw,1.5rem)] font-semibold leading-[1.1] tracking-[-0.03rem] text-[#3e3e3e]">
               {headline}
             </h2>
           ) : null}
@@ -335,7 +329,7 @@ export function SvgHoverCard({
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center rounded-full bg-[#e5e5e5] px-5 py-4 text-sm font-medium text-[#3e3e3e]"
+                  className="inline-flex items-center rounded-full bg-[#e5e5e5] px-3 py-2 sm:px-4 sm:py-3 xl:px-5 xl:py-4 text-xs sm:text-sm font-medium text-[#3e3e3e]"
                 >
                   {tag}
                 </span>
@@ -343,9 +337,8 @@ export function SvgHoverCard({
             </div>
           ) : null}
 
-          {}
           <div className="card-title">
-            <h3 className="text-[clamp(2rem,2.5vw,3rem)] font-[450] leading-[1.25] tracking-[-0.025rem] text-[var(--color-copy)]">
+            <h3 className="text-[clamp(1.5rem,2.5vw,3rem)] font-[450] leading-[1.25] tracking-[-0.025rem] text-[var(--color-copy)]">
               {title}
             </h3>
           </div>
