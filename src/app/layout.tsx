@@ -5,6 +5,7 @@ import localFont from 'next/font/local'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { Analytics } from '@/components/analytics'
 import { ScrollBar } from '@/components/scroll-bar'
+import { Fluid } from '@/components/fluid'
 
 import './globals.css'
 
@@ -24,7 +25,7 @@ const aeonik = localFont({
     {
       path: '../../public/fonts/Aeonik-Medium.woff2',
       weight: '500',
-      style: 'normal',
+      style: 'medium',
     },
   ],
   variable: '--font-aeonik',
@@ -47,6 +48,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${aeonik.variable} antialiased`}>
         <SmoothScroll />
+        <Fluid />
+
         {scrollBar}
         {children}
         <Analytics />

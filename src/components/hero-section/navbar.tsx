@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { NavActions } from './nav-actions'
 import type { default as GsapType } from 'gsap'
 
-const NAV_BRAND = 'S—SKS'
+const NAV_BRAND = 'NORDIC'
 const SCROLL_THRESHOLD = 50
 
 export function Navbar() {
@@ -84,7 +84,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-120 py-10">
       <span
         ref={brandRef}
-        className="text-sm font-bold tracking-tight will-change-transform"
+        className="text-[2.125em] font-aeonik font-medium tracking-tight will-change-transform"
       >
         {NAV_BRAND}
       </span>
