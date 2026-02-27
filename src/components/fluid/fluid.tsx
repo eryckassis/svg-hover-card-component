@@ -21,6 +21,7 @@ function FluidCanvas() {
         pointerEvents: 'none',
         fluidColor: '##cfc0a8',
         backgroundColor: 'fff',
+        zIndex: 0,
       }}
     >
       <EffectComposer>
@@ -28,13 +29,13 @@ function FluidCanvas() {
           showBackground={false}
           rainbow={false}
           blend={5}
-          intensity={0.1}
-          force={1.5}
+          intensity={0.4}
+          force={1.3}
           radius={0.4}
           curl={3}
           swirl={5}
           densityDissipation={0.89}
-          velocityDissipation={0.98}
+          velocityDissipation={1}
           pressure={0.8}
         />
       </EffectComposer>
