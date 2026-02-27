@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef, useEffect, useRef } from 'react'
-import type { TwinArrowProps } from './types'
+import type { TwinArrowProps } from './type'
 
 const DEFAULTS = {
   duration: 0.5,

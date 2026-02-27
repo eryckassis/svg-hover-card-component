@@ -4,7 +4,7 @@ import { ContactCTA } from './contact-cta'
 
 const HEADLINE = 'Built for founders who need things done right'
 
-const SERVICES: readonly Feature = [
+const SERVICES: readonly Feature[] = [
   {
     label: 'WEBFLOW DEVELOPMENT',
     description:

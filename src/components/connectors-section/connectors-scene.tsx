@@ -174,7 +174,7 @@ function Scene() {
           </Connector>
         </Physics>
       </Suspense>
-      <EffectComposer disableNormalPass multisampling={8}>
+      <EffectComposer enableNormalPass multisampling={8}>
         <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
       </EffectComposer>
       <Environment resolution={256}>

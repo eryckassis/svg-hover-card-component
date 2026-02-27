@@ -19,7 +19,7 @@ function FluidCanvas() {
         height: '100vh',
         width: '100vw',
         pointerEvents: 'none',
-        fluidColor: '##cfc0a8',
+        floodColor: '##cfc0a8',
         backgroundColor: 'fff',
         zIndex: 0,
       }}

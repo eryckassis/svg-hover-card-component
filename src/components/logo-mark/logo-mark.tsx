@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import type { default as GsapType } from 'gsap'
 import type { LogoMarkProps } from './type'
 
 export function LogoMark({
@@ -11,7 +10,7 @@ export function LogoMark({
   fadeColor = 'white',
 }: LogoMarkProps) {
   const trackRef = useRef<HTMLDivElement>(null)
-  const tweenRef = useRef<GsapType.core.Tween | null>(null)
+  const tweenRef = useRef<{ kill(): void } | null>(null)
   const initializedRef = useRef(false)
 
   useEffect(() => {
