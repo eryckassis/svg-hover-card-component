@@ -13,9 +13,9 @@ const ConnectorsScene = dynamic(
 
 export function ConnectorsSection() {
   return (
-    <section data-theme="dark" className="w-full py-20 px-4">
-      <ScrollToExplore />
+    <section data-theme="dark" className="w-full pt-4 pb-6 px-4 sm:px-6">
       <ConnectorsScene />
+      <ScrollToExplore />
     </section>
   )
 }

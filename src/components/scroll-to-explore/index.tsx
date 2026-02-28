@@ -1,6 +1,6 @@
 export function ScrollToExplore() {
   return (
-    <div className="flex items-center justify-between  w-full px-8 py-6">
+    <div className="flex items-center justify-between  w-full px-31 py-2.5 sm:px-24 lg:px-32">
       <PlusIcon />
       <PlusIcon />
       <span className="text-[1.3em] tracking-tight font-medium uppercase text-black select-none">

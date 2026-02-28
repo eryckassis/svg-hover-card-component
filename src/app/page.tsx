@@ -144,13 +144,14 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <ConnectorsSection />
 
       <LogoMark logos={PARTNER_LOGOS} speed={50} />
 
       {rows.map((row, i) => (
         <div
           key={i}
-          className="w-full px-2 mb-2 flex gap-2 max-[1000px]:flex-col"
+          className="w-full px-2 mb-2 flex gap-2 max-[1000px]:flex-col max-[1000px]:px-4 max-[1000px]:gap-4"
         >
           {row.map((card) => (
             <SvgHoverCard key={card.id} {...card} />
@@ -160,7 +161,6 @@ export default function Home() {
 
       <FooterSection />
       <ServicesSection />
-      <ConnectorsSection />
     </>
   )
 }

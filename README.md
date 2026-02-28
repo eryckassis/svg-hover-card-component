@@ -8,9 +8,6 @@
   </tr>
 </table>
 
-  
-
-
 ### Nordic Studio — Agency Portfolio Site Template
 
 Um site de portfólio para agência focada em IA, construído com Next.js 16, React 19, animações avançadas com GSAP, efeito de fluido WebGL e componentes interativos com SVG.
@@ -36,7 +33,6 @@ Um site de portfólio para agência focada em IA, construído com Next.js 16, Re
     </td>
   </tr>
 </table>
-
 
 ### Menu Interativo identico ao Lusion.co
 
@@ -157,43 +153,43 @@ Deploy (Vercel):    ████████████████████
 
 ### Frontend
 
-| Tecnologia | Versão | Finalidade |
-|---|---|---|
-| **Next.js** | 16.1.6 | Framework React com App Router |
-| **React** | 19.2.3 | UI e React Compiler |
-| **TypeScript** | 5+ | Tipagem estática |
-| **Tailwind CSS** | 4 | Estilização utilitária |
-| **GSAP** | 3.14.2 | Animações avançadas + SplitText |
-| **Lenis** | 1.3.17 | Smooth scroll global |
+| Tecnologia       | Versão | Finalidade                      |
+| ---------------- | ------ | ------------------------------- |
+| **Next.js**      | 16.1.6 | Framework React com App Router  |
+| **React**        | 19.2.3 | UI e React Compiler             |
+| **TypeScript**   | 5+     | Tipagem estática                |
+| **Tailwind CSS** | 4      | Estilização utilitária          |
+| **GSAP**         | 3.14.2 | Animações avançadas + SplitText |
+| **Lenis**        | 1.3.17 | Smooth scroll global            |
 
 ### WebGL / 3D
 
-| Tecnologia | Versão | Finalidade |
-|---|---|---|
-| **Three.js** | 0.183.1 | Renderização WebGL |
-| **@react-three/fiber** | 9.5.0 | React renderer para Three.js |
-| **@react-three/postprocessing** | 3.0.4 | Bloom, Noise, Vignette |
-| **@whatisjery/react-fluid-distortion** | 1.6.1 | Efeito de fluido iridescente |
-| **postprocessing** | 6.38.3 | Pipeline de efeitos custom |
+| Tecnologia                             | Versão  | Finalidade                   |
+| -------------------------------------- | ------- | ---------------------------- |
+| **Three.js**                           | 0.183.1 | Renderização WebGL           |
+| **@react-three/fiber**                 | 9.5.0   | React renderer para Three.js |
+| **@react-three/postprocessing**        | 3.0.4   | Bloom, Noise, Vignette       |
+| **@whatisjery/react-fluid-distortion** | 1.6.1   | Efeito de fluido iridescente |
+| **postprocessing**                     | 6.38.3  | Pipeline de efeitos custom   |
 
 ### UI / Utilitários
 
-| Tecnologia | Finalidade |
-|---|---|
-| **Radix UI** | Componentes acessíveis (primitives) |
-| **shadcn/ui** | Sistema de componentes |
-| **clsx + tailwind-merge** | Composição de classes CSS |
-| **lucide-react** | Ícones SVG |
-| **@vercel/analytics** | Analytics de produção |
+| Tecnologia                | Finalidade                          |
+| ------------------------- | ----------------------------------- |
+| **Radix UI**              | Componentes acessíveis (primitives) |
+| **shadcn/ui**             | Sistema de componentes              |
+| **clsx + tailwind-merge** | Composição de classes CSS           |
+| **lucide-react**          | Ícones SVG                          |
+| **@vercel/analytics**     | Analytics de produção               |
 
 ### DevOps
 
-| Tecnologia | Finalidade |
-|---|---|
-| **Vercel** | Deploy com CI/CD automático |
-| **pnpm** | Gerenciador de pacotes |
-| **ESLint + Prettier** | Qualidade e formatação de código |
-| **React Compiler** | Otimização automática de re-renders |
+| Tecnologia            | Finalidade                          |
+| --------------------- | ----------------------------------- |
+| **Vercel**            | Deploy com CI/CD automático         |
+| **pnpm**              | Gerenciador de pacotes              |
+| **ESLint + Prettier** | Qualidade e formatação de código    |
+| **React Compiler**    | Otimização automática de re-renders |
 
 </div>
 
@@ -204,6 +200,7 @@ Deploy (Vercel):    ████████████████████
 ### `SvgHoverCard`
 
 O componente central do projeto. Exibe um card com imagem ou vídeo de fundo, e ao hover revela:
+
 - Stroke path SVG animado via `strokeDashoffset` (GSAP)
 - Logo do cliente com fade-in
 - Título animado com `SplitText` (word by word)
@@ -213,9 +210,9 @@ O componente central do projeto. Exibe um card com imagem ou vídeo de fundo, e 
 ```tsx
 import { SvgHoverCard } from '@/components/svg-hover-card/svg-hover-card'
 
-<SvgHoverCard
+;<SvgHoverCard
   id="card-1"
-  imageSrc="/img.jpg"           // ou videoSrc="/video.mp4"
+  imageSrc="/img.jpg" // ou videoSrc="/video.mp4"
   strokeColor="#64BEF6"
   strokeColorSecondary="#EAEBEC"
   logoSrc="/logo.svg"
@@ -234,7 +231,7 @@ Marquee infinito de logos de parceiros animado com GSAP. Anima o track com `x: 0
 ```tsx
 import { LogoMark } from '@/components/logo-mark'
 
-<LogoMark
+;<LogoMark
   logos={[
     { src: '/webflow.svg', alt: 'Webflow' },
     { src: '/rubi.svg', alt: 'Ruby' },
@@ -252,14 +249,14 @@ Overlay WebGL fixo sobre toda a página com efeito de fluido interativo (reage a
 // Já incluso no layout.tsx
 import { Fluid } from '@/components/fluid'
 
-<Fluid />
+;<Fluid />
 ```
 
 **Efeitos inclusos:** Bloom, Noise, Vignette e shader iridescente custom (Fresnel + chromatic aberration + hue shift por gradiente de luminância).
 
 ### `HeroSection`
 
-Navbar + headline principal. Copy: *"AI companies deserve more than agencies"*.
+Navbar + headline principal. Copy: _"AI companies deserve more than agencies"_.
 
 ### `ConnectorsSection`
 
@@ -314,14 +311,14 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Script | Descrição |
-|---|---|
-| `pnpm dev` | Servidor de desenvolvimento |
-| `pnpm build` | Build de produção |
-| `pnpm start` | Servidor de produção |
-| `pnpm lint` | Lint com ESLint |
-| `pnpm format` | Formatação com Prettier |
-| `pnpm clean` | Remove comentários + formata |
+| Script        | Descrição                    |
+| ------------- | ---------------------------- |
+| `pnpm dev`    | Servidor de desenvolvimento  |
+| `pnpm build`  | Build de produção            |
+| `pnpm start`  | Servidor de produção         |
+| `pnpm lint`   | Lint com ESLint              |
+| `pnpm format` | Formatação com Prettier      |
+| `pnpm clean`  | Remove comentários + formata |
 
 ---
 
