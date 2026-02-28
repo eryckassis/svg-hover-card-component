@@ -92,9 +92,11 @@ function Connector({
   accent,
   color,
   roughness,
+  burst,
 }: ConnectorProps) {
   const api = useRef<RapierRigidBody>(null)
   const vec = useMemo(() => new THREE.Vector3(), [])
+  const prevBurst = useRef(burst)
   const pos = useMemo<[number, number, number]>(
     () =>
       position || [
@@ -107,6 +109,17 @@ function Connector({
 
   useFrame(() => {
     if (api.current) {
+      if (prevBurst.current !== burst) {
+        prevBurst.current = burst
+        api.current.applyImpulse(
+          new THREE.Vector3(
+            (Math.random() - 0.5) * 30,
+            (Math.random() - 0.5) * 30,
+            (Math.random() - 0.5) * 15,
+          ),
+          true,
+        )
+      }
       api.current.applyImpulse(
         vec
           .copy(api.current.translation() as unknown as THREE.Vector3)
@@ -166,9 +179,9 @@ function Scene() {
         <Physics gravity={[0, 0, 0]}>
           <Pointer />
           {connectors.map((props, i) => (
-            <Connector key={i} {...props} />
+            <Connector key={i} {...props} burst={accent} />
           ))}
-          <Connector position={[10, 10, 5]}>
+          <Connector position={[10, 10, 5]} burst={accent}>
             <Model>
               <MeshTransmissionMaterial
                 clearcoat={0}
@@ -273,6 +286,7 @@ function Scene() {
 export function ConnectorsScene() {
   return (
     <div
+      data-theme="dark"
       style={{
         width: '90%',
         maxWidth: '100%',

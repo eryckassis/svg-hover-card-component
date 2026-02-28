@@ -18,4 +18,5 @@ export interface ConnectorProps {
   accent?: boolean
   color?: string
   roughness?: number
+  burst?: number
 }
