@@ -1,12 +1,13 @@
 <table>
   <tr>
     <td width="100%" align="center">
-   <img width="2559" height="1079" alt="Screenshot 2026-02-27 134031" src="https://github.com/user-attachments/assets/1e4c6e49-5400-46bb-a50c-3827d07dd861" />
+   <img width="2559" height="1079" alt="image" src="https://github.com/user-attachments/assets/de4c4453-7262-4c80-a617-716700ce4a83" />
       <br>
       <sub><b>Homepage</b> - Design minimalista com animações GSAP e smooth scroll via Lenis</sub>
     </td>
   </tr>
 </table>
+
 
 ### Nordic Studio — Agency Portfolio Site Template
 
@@ -91,12 +92,16 @@ Um site de portfólio para agência focada em IA, construído com Next.js 16, Re
 <table>
   <tr>
     <td width="100%" align="center">
-       <video width="2559" height="1079" src="https://github.com/user-attachments/assets/df867065-e71e-4a1f-acc1-5d4da4b03ca4" />   
+       <video width="2559" height="1079" src="https://github.com/user-attachments/assets/e001b1b5-5c27-4bc0-9f91-64effb9593be" />   
       <br>
       <sub><b>Fluid Distortion</b> - Efeito de fluido iridescente sobre toda a página via React Three Fiber</sub>
     </td>
   </tr>
 </table>
+
+
+
+
 
 ### Características Visuais
 
