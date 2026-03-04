@@ -37,7 +37,7 @@ function Testimonial() {
         aria-hidden="true"
       />
 
-      <p className="mt-0 mb-2.5 max-w-[900px] font-neuemontreal text-[clamp(1.1rem,1.6vw,1.8em)] font-light leading-[1.4] text-gray-900">
+      <p className="mt-0 mb-2.5 max-w-225 font-neuemontreal text-[clamp(1.1rem,1.6vw,1.8em)] font-light leading-[1.4] text-gray-900">
         {TESTIMONIAL}
       </p>
 
@@ -56,8 +56,9 @@ export function FooterSection() {
       labelColor="#1a1a1a"
       descriptionColor="#5F5F5F"
       lineColor="#e0e0e0"
+      noFluid
     >
-      <div className="ml-0 lg:ml-20 xl:ml-200 min-[1920px]:ml-150 min-[2200px]:ml-300 flex flex-col">
+      <div className="ml-0 lg:ml-20 xl:ml-[41vw] flex flex-col">
         <Testimonial />
       </div>
     </SectionLayout>

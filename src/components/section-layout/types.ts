@@ -20,5 +20,6 @@ export interface SectionLayoutProps {
   lineColor?: string
   className?: string
   theme?: 'dark' | 'light'
+  noFluid?: boolean
   children?: React.ReactNode
 }

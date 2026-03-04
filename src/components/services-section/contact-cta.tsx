@@ -4,7 +4,7 @@ export function ContactCTA() {
       <h3 className="relative ml-0 2xl:ml-20 text-[clamp(2rem,3.5vw,3.5em)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
         Contact us
       </h3>
-      <p className="ml-0 xl:ml-10 2xl:ml-60 max-w-[1000px] text-[clamp(1.6rem,3.2vw,4em)] font-normal leading-[1.3] text-white">
+      <p className="ml-0 xl:ml-10 2xl:ml-10 max-w-[1000px] text-[clamp(1.6rem,3.2vw,4em)] font-normal leading-[1.3] text-white">
         If you&apos;re growing, we&apos;re ready to build with you.{' '}
         <a
           href="#"
